@@ -1,10 +1,11 @@
 const { Schema, model } = require('mongoose');
+const Counter = require('./Counter.model');
 
-const User = new Schema({
+const UserSchema = new Schema({
     id: {
         type: Number,
-        required: true,
         unique: true,
+        // required: true
     },
     username: {
         type: String,
@@ -22,6 +23,21 @@ const User = new Schema({
     email: {
         type: String
     }
-});
+}
+);
 
-module.exports = model('users', User);
+UserSchema.pre('save', async function (next) {
+    try {
+      const counter = await Counter.findByIdAndUpdate(
+        '_user',
+        { $inc: { count: 1 } },
+        { new: true, upsert: true }
+      );
+      this.id = counter.count;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  });
+
+module.exports = model('users', UserSchema);

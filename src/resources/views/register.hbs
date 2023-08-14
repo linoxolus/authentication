@@ -40,3 +40,83 @@
         </div>
 </div>
 
+<script>
+    var username = document.querySelector('#username');
+    var password = document.querySelector('#password');
+    var rePassword = document.querySelector('#rePassword');
+    var submit = document.querySelector('.submit');
+    var errorMsgs = document.querySelectorAll('.error');
+    // regex: at least 8 characters, 1 number, 1 alphabet
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const errorMessages = {
+    passwordLength: {
+        message: 'Password must be at least 8 characters',
+        errorInput: 1
+    },
+    passwordPattern: {
+        message: 'Password must have at least 1 alphabet character and 1 number',
+        errorInput: 1
+    },
+    passwordMatch: {
+        message: 'Passwords do not match',
+        errorInput: 2
+    },
+    passwordValid: {
+        message: '',
+        errorInput: 1,
+        valid: true
+    }
+    };
+
+    function validate(e) {
+    if (password.value.length < 8) {
+        return errorMessages.passwordLength;
+    }
+
+    if (!regex.test(password.value)) {
+        return errorMessages.passwordPattern;
+    }
+
+    if (password.value !== rePassword.value) {
+        return errorMessages.passwordMatch;
+    }
+
+    return errorMessages.passwordValid; // Password is valid
+    }
+
+    function validateHandler() {
+        const validatedResult = validate();
+        if(!validatedResult.valid) {
+            errorMsgs[validatedResult.errorInput].innerText = validatedResult.message;
+        } else {
+            errorMsgs[0].innerText = '';
+            errorMsgs[1].innerText = '';
+            errorMsgs[2].innerText = '';
+
+            postData();
+        }
+    }
+
+    function postData() {
+        var result = {
+            username: username.value,
+            password: password.value,
+        }
+
+        fetch('/auth/register', {
+            method: "POST",
+            body: JSON.stringify(result),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then(res => {
+            console.log(res);
+            location.reload();
+        })
+        .catch('Bug!!!')
+    }
+
+    submit.onclick = validateHandler;
+
+</script>
