@@ -1,0 +1,58 @@
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: sans-serif
+
+@mixin flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+.container
+    @include flex-center
+    min-height: 100vh
+    overflow: hidden
+
+.authen
+    @include flex-center
+    flex-wrap: wrap
+    .authen-item
+        flex-basis: 100%
+        display: block
+        @include flex-center
+        margin: 12px
+        flex-wrap: wrap
+        .error
+            flex-basis: 100%
+            @include flex-center
+            color: red
+            font-size: 10px
+            margin-top: 4px
+        input.authen-field
+            padding: 12px
+            border-radius: 5px
+            border: 2px solid #ccc
+        a
+            text-decoration: none
+        a.forgot
+            color: #0d6efd
+        a.btn
+            background: transparent
+            color: #000
+            border: #ccc 2px solid
+        .btn
+            @include flex-center
+            width: 90px
+            height: 35px
+    .authen-btn
+        gap: 26px
+.btn
+    display: block
+    padding: 8px 16px
+    border-radius: 5px
+    border: 2px solid #ccc
+.btn-primary
+    border: none
+    background: #03a9f4
+    color: #fff

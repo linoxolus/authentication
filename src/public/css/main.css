@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; }
+
+.authen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .authen .authen-item {
+    flex-basis: 100%;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px;
+    flex-wrap: wrap; }
+    .authen .authen-item .error {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: red;
+      font-size: 10px;
+      margin-top: 4px; }
+    .authen .authen-item input.authen-field {
+      padding: 12px;
+      border-radius: 5px;
+      border: 2px solid #ccc; }
+    .authen .authen-item a {
+      text-decoration: none; }
+    .authen .authen-item a.forgot {
+      color: #0d6efd; }
+    .authen .authen-item a.btn {
+      background: transparent;
+      color: #000;
+      border: #ccc 2px solid; }
+    .authen .authen-item .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 35px; }
+  .authen .authen-btn {
+    gap: 26px; }
+
+.btn {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 2px solid #ccc; }
+
+.btn-primary {
+  border: none;
+  background: #03a9f4;
+  color: #fff; }

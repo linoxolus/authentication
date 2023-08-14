@@ -1,0 +1,34 @@
+<div class='authen login'>
+    <form action='/auth/login' method='post'>
+        <div class='authen-item'>
+            <h1 class='header'>
+                Login
+            </h1>
+        </div>
+        <div class='authen-item'>
+            <input
+                type='text'
+                name='username'
+                id='username'
+                class='authen-field'
+                placeholder='Username'
+            />
+        </div>
+        <div class='authen-item'>
+            <input
+                type='password'
+                name='password'
+                id='password'
+                class='authen-field'
+                placeholder='Password'
+            />
+        </div>
+        <div class='authen-item'>
+            <a href='#' class='forgot'>Forgot password</a>
+        </div>
+        <div class='authen-item authen-btn'>
+            <button type='submit' class='btn btn-primary submit'>Login</button>
+            <a href="/register" class="btn btn-primary">Register</a>
+        </div>
+    </form>
+</div>
