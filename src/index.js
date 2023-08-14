@@ -14,7 +14,7 @@ const port = 2008;
 // expess configure
 app.engine('hbs', engine({extname: '.hbs'}));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'resources', 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded());
